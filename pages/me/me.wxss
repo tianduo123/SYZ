@@ -1,0 +1,71 @@
+/* pages/me/me.wxss */
+page{
+  background: #f4f4f4
+}
+.userInfo{
+  width: 100%;
+  height: 250rpx;
+  background: #FFCC33;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+.avatar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.avatar>image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-bottom: 30rpx;
+  border: 5rpx solid #eeeeee
+}
+.myOrder{
+  width: 90%;
+  height: 300rpx;
+  border-radius: 20rpx;
+  background: #ffffff;
+  margin: 20rpx auto
+}
+.myOrder_title{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee
+}
+.myOrder_content{
+  height: 220rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+.content_item{
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+.myActivity{
+  width: 90%;
+  height: 450rpx;
+  border-radius: 20rpx;
+  background: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.myPin,.myKan,.lianxi,.like{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80rpx
+}
+.lianxi{
+  border-bottom: 1px solid #eeeeee;
+}

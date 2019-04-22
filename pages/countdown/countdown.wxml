@@ -1,0 +1,9 @@
+<!--pages/countdown/countdown.wxml-->
+<view wx:for="{{countDownList}}" wx:key="countDownList">
+  剩余
+  <text>{{item.day}}</text>天
+  <text>{{item.hou}}</text>时
+  <text>{{item.min}}</text>分
+  <text>{{item.sec}}</text>秒
+</view>
+

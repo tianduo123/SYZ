@@ -1,0 +1,43 @@
+<!--pages/group_detail/group_detail.wxml-->
+<view class='goods_info'>
+  <view class='goods_info_img'>
+    <image src='{{imgUrl+detail.fengmian}}' style='width:180rpx;height:180rpx'></image>
+  </view>
+  <view class='goods_info_info'>
+    <view class='name'>{{detail.goods_name}}</view>
+    <view class='price'>
+      <view style='font-size:32rpx;color:#CC0000'>￥{{detail.pin_price}}</view>
+      <view style='font-size:28rpx;color:#666666;text-decoration:line-through;margin-left:20rpx'>￥{{detail.price}}</view>
+    </view>
+  </view>
+</view>
+<view class='order_info'>
+  <view class='order_item'>
+    <view class='item_key'>订单号</view>
+    <view class='item_value'>{{orderDetail.ord_bh}}</view>
+  </view>
+  <view class='order_item'>
+    <view class='item_key'>下单时间</view>
+    <view class='item_value'>{{orderDetail.start_time}}</view>
+  </view>
+  <view class='order_item'>
+    <view class='item_key'>订单状态</view>
+    <view class='item_value'>{{orderDetail.status==0?"待付款":orderDetail.status==3?"已退款":orderDetail.status==4?"已失效":"已付款"}}</view>
+  </view>
+    <view class='order_item'>
+    <view class='item_key'>拼团状态</view>
+    <view class='item_value'>{{orderDetail.gb_status==1?"还差"+cha+"人拼成":orderDetail.gb_status==2?"拼团成功":"拼团失败"}}</view>
+  </view>
+   <view class='order_item'>
+    <view class='item_key'>支付方式</view>
+    <view class='item_value'>微信支付</view>
+  </view>
+</view>
+<view style=' display: flex;justify-content: flex-end;margin-right:20rpx'>
+  <view class='phone' wx:if='{{order_status==0}}' bindtap='pay_order'>去付款</view>
+  <view class='phone2'  bindtap='phone'>联系机构</view>
+</view>
+<!--拼团成员 -->
+<view class='user'>
+  
+</view>

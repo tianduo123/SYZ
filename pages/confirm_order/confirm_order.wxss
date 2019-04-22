@@ -1,0 +1,78 @@
+/* pages/group_detail/group_detail.wxss */
+page{
+  background: #eeeeee;
+}
+.goods_info{
+  width: 95%;
+  height: 250rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin: 20rpx auto;
+  display: flex;
+  align-items: center
+}
+.goods_info_img{
+  width: 30%;
+}
+.goods_info_info{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.name{
+  font-size: 32rpx;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; 
+}
+.price{
+  display: flex;
+  align-items: center
+}
+.order_info{
+  width: 95%;
+  height: 600rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+  margin: 0 auto;
+  font-size: 28rpx;
+  color: #666666;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.order_item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.phone{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  background: #CC0000;
+  font-size: 32rpx;
+}
+.phone2{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  background: #666666	;
+  font-size: 32rpx;
+  margin-right: 20rpx
+}

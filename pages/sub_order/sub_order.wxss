@@ -1,0 +1,98 @@
+/* pages/sub_order/sub_order.wxss */
+.title{
+  display: flex;
+  align-items: center;
+  height: 50rpx
+}
+.goodsInfo{
+  width: 100%;
+  height: 200rpx;
+  background: #f6f6f6;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+  display: flex;
+}
+.info_left{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.info_right{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 20rpx
+}
+.r_t{
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;      /* 可以显示的行数，超出部分用...表示*/
+  -webkit-box-orient: vertical;
+}
+.r_b{
+  color: #CC0000;
+  display: flex;
+  font-size: 26rpx;
+  align-items: center
+}
+.form_info{
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.default{
+  margin-left: 20rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  width: 20%
+}
+.inp{
+  font-size: 28rpx;
+  width: 80%;
+  text-align: right;
+  margin-right: 20rpx
+}
+.pay{
+  text-align: right;
+  font-size: 28rpx;
+  color: #666666;
+  display: flex;
+  margin-right: 20rpx
+}
+.form_btn{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  border-top: 1px solid #eeeeee
+}
+.price{
+  width: 60%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx
+}
+.order{
+  width: 40%;
+  line-height: 80rpx;
+  text-align: center;
+  background: #CC0000;
+  color: #ffffff;
+  font-size: 32rpx
+}
+button::after {
+  border: none;
+}
+button {
+  border-radius:0;
+}

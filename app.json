@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/me/me",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/kcdetail/kcdetail",
+    "pages/sub_order/sub_order",
+    "pages/detail_order/detail_order",
+    "pages/order/order",
+    "pages/myGroup/myGroup",
+    "pages/myLike/myLike",
+    "pages/group_detail/group_detail",
+    "pages/confirm_order/confirm_order",
+    "pages/countdown/countdown",
+    "pages/text/text"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "省银子儿",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "icon/home.png",
+        "selectedIconPath": "icon/sele_home.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "icon/me.png",
+        "selectedIconPath": "icon/sele_me.png"
+      }
+    ]
+  }
+}

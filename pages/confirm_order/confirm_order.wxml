@@ -1,0 +1,43 @@
+<!--pages/group_detail/group_detail.wxml-->
+<view class='goods_info'>
+  <view class='goods_info_img'>
+    <image src='{{imgUrl+detail.fengmian}}' style='width:180rpx;height:180rpx'></image>
+  </view>
+  <view class='goods_info_info'>
+    <view class='name'>{{detail.goods_name}}</view>
+    <view class='price'>
+      <view style='font-size:32rpx;color:#CC0000'>￥{{detail.pin_price}}</view>
+      <view style='font-size:28rpx;color:#666666;text-decoration:line-through;margin-left:20rpx'>￥{{detail.price}}</view>
+    </view>
+  </view>
+</view>
+<view class='order_info'>
+  <view class='order_item'>
+    <view class='item_key'>学员姓名</view>
+    <view class='item_value'>{{name}}</view>
+  </view>
+    <view class='order_item'>
+    <view class='item_key'>手机号码</view>
+    <view class='item_value'>{{phone}}</view>
+  </view>
+  <view class='order_item'>
+    <view class='item_key'>订单号</view>
+    <view class='item_value'>{{ord_id}}</view>
+  </view>
+  <view class='order_item'>
+    <view class='item_key'>下单时间</view>
+    <view class='item_value'>{{time}}</view>
+  </view>
+  <view class='order_item'>
+    <view class='item_key'>订单状态</view>
+    <view class='item_value'>未支付</view>
+  </view>
+   <view class='order_item'>
+    <view class='item_key'>支付方式</view>
+    <view class='item_value'>微信支付</view>
+  </view>
+</view>
+<view style=' display: flex;justify-content: flex-end;margin-right:20rpx'>
+  <!-- <view class='phone2' bindtap='concel_order'>取消订单</view> -->
+  <view class='phone' bindtap='pay_order'>立即支付</view>
+</view>

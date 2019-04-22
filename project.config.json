@@ -1,0 +1,121 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.4",
+	"appid": "wx3950a029465d5070",
+	"projectname": "%E7%9C%81%E9%93%B6%E5%AD%90%E5%84%BF",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": -1,
+					"name": "课程详情",
+					"pathName": "pages/kcdetail/kcdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提交订单",
+					"pathName": "pages/sub_order/sub_order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团/开团详情",
+					"pathName": "pages/detail_order/detail_order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单页面",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "商品列表",
+					"pathName": "pages/myGroup/myGroup",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的收藏",
+					"pathName": "pages/myLike/myLike",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "拼团详情",
+					"pathName": "pages/group_detail/group_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单确认页",
+					"pathName": "pages/confirm_order/confirm_order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "倒计时",
+					"pathName": "pages/countdown/countdown",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "text",
+					"pathName": "pages/text/text",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,41 @@
+<!--pages/home/home.wxml-->
+<!-- 授权蒙层 -->
+<view class='getU' style='height:{{Height*2}}rpx' wx:if='{{isShow}}'>
+  <view class='getU_wrap'>
+    <view class='getU_t'>需要您的授权</view>
+    <view class='getU_c'>
+      <view>为了提供更好的服务</view>
+      <view>请在稍后的提示框中点击"允许"</view>
+    </view>
+    <image style='height:400rpx;width:500rpx' src='../../icon/get.png'></image>
+    <button class='getU_btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>我知道了</button>
+  </view>
+</view>
+
+<!-- 轮播图 -->
+<swiper indicator-dots='true' autoplay='true' class='swiper'>
+  <swiper-item wx:for='{{tjList}}' wx:key  data-id='{{item.id}}' bindtap='toDetail'>
+    <image src='{{imgUrl+item.imgs[0].img_name}}' style="width:100%;height:100%"></image>
+  </swiper-item>
+</swiper>
+
+<!-- 分类 -->
+<view class='classify'>
+  <view class='{{isSeleK?"class_item":"class_item2"}}' bindtap='chooseClass' data-status='0'>拼团课程</view>
+  <view class='{{isSeleG?"class_item":"class_item2"}}' bindtap='chooseClass' data-status='1'>拼团商品</view>
+</view>
+
+<!-- 商品列表 -->
+<view class='goods_wrap' wx:if='{{kcList}}'>
+  <view class='goods_item' bindtap='toDetail' wx:for='{{kcList}}' wx:key data-id='{{item.id}}'>
+    <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:330rpx'></image>
+    <view class='name'>{{item.goods_name}}</view>
+    <view style='display:flex;align-items:center'>
+      <view style='font-size:32rpx;color:#FF0000'>￥{{item.pin_price}}</view>
+      <view style='font-size:24rpx;color:#666666;margin-left:30rpx'>已拼<view style='display:inline-block;color:#FF0000'>{{item.sales_sum}}</view>件</view>
+    </view>
+  </view>
+</view>
+<view wx:else class='no'>
+  
+</view>

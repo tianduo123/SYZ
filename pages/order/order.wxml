@@ -1,0 +1,32 @@
+<!--pages/order/order.wxml-->
+<view class='title'>
+  <view class='{{ status == 0 ? "title_item" : "title_item2" }}' data-status='0' bindtap='seleStatus'>全部</view>
+  <view class='{{ status == 1 ? "title_item" : "title_item2" }}' data-status='1' bindtap='seleStatus'>待付款</view>
+  <view class='{{ status == 2 ? "title_item" : "title_item2" }}' data-status='2' bindtap='seleStatus'>已付款</view>
+  <view class='{{ status == 3 ? "title_item" : "title_item2" }}' data-status='3' bindtap='seleStatus'>已完成</view>
+  <view class='{{ status == 4 ? "title_item" : "title_item2" }}' data-status='4' bindtap='seleStatus'>已退款</view>
+  <view class='{{ status == 5 ? "title_item" : "title_item2" }}' data-status='5' bindtap='seleStatus'>已失效</view>
+</view>
+<view class='order-item' bindtap='orderDetail' wx:for='{{orderList}}' wx:key data-goodsid='{{item.goods_id}}' data-bh='{{item.ord_bh}}' data-status='{{item.status}}' wx:if='{{orderList}}' data-id='{{item.gb_id}}'>
+  <view class='item_img'>
+    <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:100%'></image>
+  </view>
+  <view class='item_info'>
+    <view class='item_info_title'>
+      <view style='font-size:32rpx;font-weight:bold;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:70%'>{{item.goods_name}}</view>
+      <view style='font-size:32rpx;color:#666666'>{{item.status==0?"待付款":item.status==1?"已付款":item.status==2?"已完成":item.status==3?"已退款":"已失效"}}</view>
+    </view>
+    <view class='item_info_price'>
+      <view style='font-size:28rpx;color:#666666;text-decoration:line-through;display:inline-block'>￥{{item.price}}</view>
+      <view style='font-size:32rpx;color:#CC0000;display:inline-block;margin-left:20rpx'>￥{{item.ord_price}}</view>
+    </view>
+    <view class='item_info_orderNum'>
+      <view>订单号</view>
+      <view>{{item.ord_bh}}</view>
+    </view>
+    <view class='item_info_time'>
+      <view>下单时间</view>
+      <view>{{item.start_time}}</view>
+    </view>
+  </view>
+</view>

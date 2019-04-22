@@ -1,0 +1,42 @@
+<!--pages/detail_order/detail_order.wxml-->
+<view class='top'>
+  <view class='goods_info'>
+    <view class='goods_info_img'>
+      <image src='{{imgUrl+detail.fengmian}}' style='width:100%;height:100%'></image>
+    </view>
+    <view class='goods_info_info'>
+      <view class='name'>{{detail.goods_name}}</view>
+      <view class='price'>￥{{detail.pin_price}}
+        <view style='display:inline-block;font-size:24rpx;color:#666666;margin-left:20rpx;text-decoration:line-through'>￥{{detail.price}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='img'>
+  <image style='width:250rpx;height:250rpx' src='../../icon/buy.png'></image>
+  <view style='font-size:32rpx;color:#fd7e0e;text-align:center'>—— 拼团成功 ——</view>
+</view>
+<view class='userInfo'>
+  <view style='display:flex'>
+    <view class='userInfo_item' wx:for='{{group}}' wx:key>
+      <image src='{{item.headimgurl}}'></image>
+      <view>{{item.nickname}}.</view>
+    </view>
+  </view>
+</view>
+
+<view class='more' bindtap='toMyGroup'>查看我的拼团</view>
+<view class='check' bindtap='more'>回到首页</view>
+
+<view class='rule'>
+  <view style='font-size:32rpx;color:#666666;font-weight:bold;margin-bottom:20rpx'>拼团须知：</view>
+  <view style='font-size:32rpx;color:#333333'>1.拼团有效期 </view>
+  <view style='font-size:28rpx;color:#666666;margin:15rpx'>拼团有效期是自开团时刻起的24小时内</view>
+  <view style='font-size:32rpx;color:#333333'>2.拼团成功 </view>
+  <view style='font-size:28rpx;color:#666666;margin:15rpx'>拼团有效期内，支付的用户达到参团人数，则拼团成功</view>
+  <view style='font-size:32rpx;color:#333333'>3.拼团失败 </view>
+  <view style='font-size:28rpx;color:#666666;margin:15rpx'>拼团有效期后，未达成相应参团人数的团，则该团失败；团人数有限，高峰期同时支付人数过多时，以接受第三方支付信息时间先后为准，超过该团人数限制的部分则会拼团失败；拼团失败的订单，系统会在1-7个 工作日内处理退款，系统处理后1-10个工作日内原路退回原支付账户中</view>
+  <view style='font-size:32rpx;color:#333333'>4.等待拼团如何退款？</view>
+  <view style='font-size:28rpx;color:#666666;margin:15rpx'>拼团中状态暂不支持退款申请，若拼团失败后会自动退回</view>
+</view>

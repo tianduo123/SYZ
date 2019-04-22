@@ -1,0 +1,39 @@
+<!--pages/sub_order/sub_order.wxml-->
+<view class='title'>
+  <image src='../../icon/pin.png' style='width:50rpx;height:50rpx;margin-left:20rpx'></image>
+  <view style='font-size:28rpx;font-weight:bold;margin-left:20rpx;width:80%;overflow: hidden;text-overflow: ellipsis;white-space:nowrap'>{{detail.goods_name}}</view> 
+</view>
+<view class='goodsInfo'>
+  <view class='info_left'>
+    <image src='{{imgUrl+detail.fengmian}}' style='width:100%;height:100%'></image>
+  </view>
+  <view class='info_right'>
+    <view class='r_t'>{{detail.goods_name}}</view>
+    <view class='r_b'>￥<view style='font-size:32rpx'>{{detail.pin_price}}</view><view style='color:#666666;font-size:26rpx;text-decoration:line-through;margin-left:15rpx'>￥{{detail.price}}</view></view>
+  </view>
+</view>
+<form bindsubmit='submit' class='form'>
+  <view class='form_info'>
+    <view class='default'>学员姓名</view>
+    <input class='inp' placeholder='请输入姓名' name='name'></input>
+  </view>
+  <view class='form_info'>
+    <view class='default'>手机号码</view>
+    <input class='inp' placeholder='请输入手机号码' name='phone'></input>
+  </view>
+  <view class='form_info'>
+    <view class='default'>支付方式</view>
+    <view class='pay'>
+      <image src='../../icon/wechat.png' style='width:40rpx;height:40rpx;margin-right:10rpx'></image>
+      <view>微信支付</view>
+    </view>
+  </view>
+  <view class='form_info'>
+    <view class='default'>买家留言</view>
+    <input class='inp' placeholder='请填写留言' name='msg'></input>
+  </view>
+  <view class='form_btn'>
+    <view class='price'>实付款：<view style='display:inline-block;color:#CC0000;font-size:32rpx'>￥{{detail.pin_price}}</view></view>
+    <button class='order' form-type='submit'>提交订单</button>
+  </view>
+</form>
