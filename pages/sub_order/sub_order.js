@@ -64,17 +64,22 @@ Page({
               })
             } else if (res.data.status == 2) {
               wx.showToast({
-                title: '该商品有未完成的订单哦',
+                title: res.data.message,
                 icon: 'none'
               })
             } else if (res.data.status == 3) {
               wx.showToast({
-                title: '该商品有未完成的订单哦',
+                title: res.data.message,
                 icon: 'none'
               })
             } else if (res.data.status == 4) {
               wx.showToast({
-                title: '该商品团已满，请浏览其他商品吧',
+                title: res.data.message,
+                icon: 'none'
+              })
+            } else if (res.data.status == 5) {
+              wx.showToast({
+                title: res.data.message,
                 icon: 'none'
               })
             }
@@ -136,8 +141,6 @@ Page({
         })
       }
     }
-
-
   },
 
   /**

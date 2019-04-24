@@ -52,9 +52,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.userInfo)
-    this.setData({
-      avatarUrl: app.globalData.userInfo.avatarUrl,
-      nickNmae: app.globalData.userInfo.nickName
+    wx.getStorage({
+      key: 'userInfo',
+      success:(res)=>{
+        console.log(res)
+        this.setData({
+          avatarUrl:res.data.avatarUrl,
+          nickName:res.data.nickName
+        })
+      },
     })
   },
 

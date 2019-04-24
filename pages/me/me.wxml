@@ -2,7 +2,7 @@
 <view class='userInfo'>
   <view class='avatar'>
     <image src='{{avatarUrl}}'></image>
-    <view style='font-size:32rpx;color:#CC0000'>{{nickNmae}}</view>
+    <view style='font-size:32rpx;color:#CC0000'>{{nickName}}</view>
   </view>
 </view>
 

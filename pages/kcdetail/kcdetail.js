@@ -188,7 +188,6 @@ Page({
           sec: '00',
           status:0
         }
- 
       }
       countDownArr.push(obj);
     })
@@ -196,14 +195,14 @@ Page({
     this.data.groups.forEach((item,index)=>{
       this.data.groups[index].djs = countDownArr[index]
     })
-    console.log(this.data.groups)
+    // console.log(this.data.groups)
     this.setData({
       groups:this.data.groups
     })
     this.setData({
       countDownList: countDownArr
     })
-    console.log(this.data.countDownList)
+    // console.log(this.data.countDownList)
     setTimeout(this.countDown, 1000);
   },
 
