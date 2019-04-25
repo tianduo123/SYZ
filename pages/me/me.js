@@ -32,7 +32,7 @@ Page({
   //联系商家
   makePhone(){
     wx.makePhoneCall({
-      phoneNumber: '123123123123',
+      phoneNumber: '13381444813',
     })
   },
   //我的拼团

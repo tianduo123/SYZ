@@ -60,7 +60,7 @@
 <view class='line'></view>
 
 <!-- 商品详情 -->
-<view class='goods_deetail'>
+<view class='goods_detail'>
   <view class='rule_title'>商品介绍</view>
   <view class='wxParse'>
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
