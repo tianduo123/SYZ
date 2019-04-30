@@ -11,8 +11,8 @@ Page({
   },
   //提交订单
   submit(e) {
-    console.log('用户信息是',app.globalData.userInfo)
-    console.log('openid是',app.globalData.openid)
+    console.log('用户信息是', app.globalData.userInfo)
+    console.log('openid是', app.globalData.openid)
     console.log(e)
     if (!e.detail.value.phone) {
       wx.showToast({
@@ -24,14 +24,21 @@ Page({
         title: '手机号码错误',
         icon: 'none'
       })
-    } else {
+    }
+    // else if (!app.globalData.userInfo) {
+    //   wx.showToast({
+    //     title: '请回到首页授权后再进行该操作',
+    //     icon: 'none'
+    //   })
+    // }
+    else {
       //参团/开团生成订单(需先判断是开团还是参团)
       if (this.data.type == 0) {
         console.log('参团')
         wx.request({
           url: api.makeGroup(),
-          method:'POST',
-          data:{
+          method: 'POST',
+          data: {
             admin_id: 15,
             openid: app.globalData.openid,
             headimgurl: app.globalData.userInfo.avatarUrl,
@@ -106,7 +113,7 @@ Page({
             ord_goods: this.data.ord_goods
           },
           header: {
-            'content-type': "application/x-www-form-urlencoded" 
+            'content-type': "application/x-www-form-urlencoded"
           },
           success: (res) => {
             console.log(res)
@@ -159,10 +166,10 @@ Page({
     //商品详情
     wx.request({
       url: api.getKcDetail(options.goods_id),
-      success:(res)=>{
+      success: (res) => {
         console.log(res)
         this.setData({
-          detail:res.data.detail
+          detail: res.data.detail
         })
       }
     })

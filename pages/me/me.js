@@ -52,16 +52,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.userInfo)
-    wx.getStorage({
-      key: 'userInfo',
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          avatarUrl:res.data.avatarUrl,
-          nickName:res.data.nickName
-        })
-      },
-    })
+ 
   },
 
   /**
@@ -75,7 +66,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          avatarUrl: res.data.avatarUrl,
+          nickName: res.data.nickName
+        })
+      },
+    })
   },
 
   /**
