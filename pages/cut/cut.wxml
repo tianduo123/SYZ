@@ -1,0 +1,29 @@
+<!--pages/cut/cut.wxml-->
+<!-- 轮播图 -->
+<swiper indicator-dots='true' autoplay='true' class='swiper'>
+  <swiper-item wx:for='{{bannerList}}' wx:key data-id='{{item.id}}' bindtap='toDetail'>
+    <image src='{{imgUrl+item.img[0].img_name}}' style="width:100%;height:100%"></image>
+  </swiper-item>
+</swiper>
+<!-- 砍价商品列表 -->
+<view class='goodsList'>
+  <view class='title'>
+    <view class='wrap'>
+      <image src='../../icon/ellipsis.png' style='width:30rpx;height:30rpx'></image>
+      <view>快来砍价吧</view>
+      <image src='../../icon/ellipsis.png' style='width:30rpx;height:30rpx'></image>
+    </view>
+  </view>
+  <view class='goods_item' wx:for='{{cutList}}' wx:key data-id='{{item.id}}'>
+    <view class='item_l'>
+      <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:100%'></image>
+    </view>
+    <view class='item_r'>
+      <view class='goods_name'>{{item.goods_name}}</view>
+      <view class='payInfo'>
+        <view style='color:#CC0000'>已砍价76件</view>
+        <view class='kan'bindtap='cutPrice'>点我砍价</view>
+      </view>
+    </view>
+  </view>
+</view>

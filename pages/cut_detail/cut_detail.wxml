@@ -1,0 +1,14 @@
+<!--pages/cut_detail/cut_detail.wxml-->
+<view class='wrap'>
+  <view class='goods_info'>
+    <view class='info_l'>
+      <image src='../../icon/4.jpg' style='width:100%;height:100%'></image>
+    </view>
+    <view class='info_r'>
+      <view class='name'>AJ JORDAN JUMPMAN AIR HBR 男子连帽衫卫衣 AR2249 AR2249-010黑 XXL</view>
+      <view class='time'> <view class='time_wrap'>0</view><view style='margin:0 5rpx'>:</view><view class='time_wrap'>6</view><view style='margin:0 5rpx'>:</view><view class='time_wrap' style='margin-right:10rpx'>55</view>后砍价过期</view>
+      <view style='font-size:32rpx;color:#FF0000'>￥465</view>
+    </view>
+  </view>
+  <view class='cut'>开始砍价</view>
+</view>

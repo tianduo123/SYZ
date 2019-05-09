@@ -1,9 +1,10 @@
 //app.js
 const api = require('./request/api.js')
 App({
-  onLaunch: function () {
-    // console.log(options)
-    // console.log("生元宝传过来的id是", options.referrerInfo)
+  onLaunch: function (options) {
+    console.log(options)
+    console.log("生元宝传过来的id是", options.referrerInfo.extraData.admin_id)
+    this.globalData.BASE_ID = options.referrerInfo.extraData.admin_id
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -15,7 +16,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res)
         wx.request({
-          url: api.getOpenid(this.globalData.appid, this.globalData.secret, res.code),
+          url: api.getOpenid(this.globalData.appid, this.globalData.secret, res.code,this.globalData.BASE_ID),
           success: (res) => {
             console.log(res)
             this.globalData.openid = res.data.openid

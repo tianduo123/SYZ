@@ -13,7 +13,9 @@
     "pages/group_detail/group_detail",
     "pages/confirm_order/confirm_order",
     "pages/countdown/countdown",
-    "pages/text/text"
+    "pages/text/text",
+    "pages/cut/cut",
+    "pages/cut_detail/cut_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,9 +29,15 @@
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
+        "text": "拼团",
         "iconPath": "icon/home.png",
         "selectedIconPath": "icon/sele_home.png"
+      },
+      {
+        "pagePath": "pages/cut/cut",
+        "text": "砍价",
+        "iconPath": "icon/cut.png",
+        "selectedIconPath": "icon/sele_cut.png"
       },
       {
         "pagePath": "pages/me/me",

@@ -1,34 +1,18 @@
-// pages/goods_list/goods_list.js
-const app = getApp()
-const api = require('../../request/api.js')
+// pages/cut_detail/cut_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl: api.BASE_IMG
+
   },
-  //拼团详情
-  toDetail(e){
-    wx.navigateTo({
-      url: `../group_detail/group_detail?goods_id=${e.currentTarget.dataset.goodsid}&bh=${e.currentTarget.dataset.bh}&status=${e.currentTarget.dataset.status}`,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取我的拼团
-    wx.request({
-      url: api.myGroup(app.globalData.openid,app.globalData.BASE_ID),
-      success:(res)=>{
-        console.log(res)
-        this.setData({
-          myList:res.data.re
-        })
-      }
-    })
+
   },
 
   /**

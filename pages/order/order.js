@@ -19,7 +19,7 @@ Page({
     if (this.data.status == 0) {
       console.log('全部订单')
       wx.request({
-        url: api.myAllOrder(app.globalData.openid),
+        url: api.myAllOrder(app.globalData.openid,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -37,7 +37,7 @@ Page({
     } else if (this.data.status == 1) {
       console.log('待付款')
       wx.request({
-        url: api.myOrder(app.globalData.openid, 0),
+        url: api.myOrder(app.globalData.openid, 0,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -54,7 +54,7 @@ Page({
     } else if (this.data.status == 2) {
       console.log('已付款')
       wx.request({
-        url: api.myOrder(app.globalData.openid, 1),
+        url: api.myOrder(app.globalData.openid, 1,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -71,7 +71,7 @@ Page({
     } else if (this.data.status == 3) {
       console.log('已完成')
       wx.request({
-        url: api.myOrder(app.globalData.openid, 2),
+        url: api.myOrder(app.globalData.openid, 2,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -88,7 +88,7 @@ Page({
     } else if (this.data.status == 4) {
       console.log('已退款')
       wx.request({
-        url: api.myOrder(app.globalData.openid, 3),
+        url: api.myOrder(app.globalData.openid, 3,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -105,7 +105,7 @@ Page({
     }else{
       console.log('已失效')
       wx.request({
-        url: api.myOrder(app.globalData.openid, 4),
+        url: api.myOrder(app.globalData.openid, 4,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {
@@ -139,7 +139,7 @@ Page({
 
     if (this.data.status == 0) {
       wx.request({
-        url: api.myAllOrder(app.globalData.openid),
+        url: api.myAllOrder(app.globalData.openid,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           this.setData({
@@ -149,7 +149,7 @@ Page({
       })
     } else {
       wx.request({
-        url: api.myOrder(app.globalData.openid, this.data.status-1),
+        url: api.myOrder(app.globalData.openid, this.data.status-1,app.globalData.BASE_ID),
         success: (res) => {
           console.log(res)
           if (res.data.status != 0) {

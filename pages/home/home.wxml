@@ -27,7 +27,7 @@
 
 <!-- 商品列表 -->
 <view class='goods_wrap' wx:if='{{kcList}}'>
-  <view class='goods_item' bindtap='toDetail' wx:for='{{kcList}}' wx:key data-id='{{item.id}}'>
+  <view class='goods_item' bindtap='toDetail' wx:for='{{isSeleK?kcList:goodsList}}' wx:key data-id='{{item.id}}'>
     <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:330rpx'></image>
     <view class='name'>{{item.goods_name}}</view>
     <view style='display:flex;align-items:center'>

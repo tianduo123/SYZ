@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -115,7 +115,88 @@
 					"id": -1,
 					"name": "text",
 					"pathName": "pages/text/text",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "砍价",
+					"pathName": "pages/cut/cut",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "砍价商品详情",
+					"pathName": "pages/cut_detail/cut_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b3667",
+						"extraData": "{}"
+					}
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "admin_id=15",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b3667",
+						"extraData": "{}"
+					}
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "admin_id=api.BASE_ID",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b3667",
+						"extraData": "{}"
+					}
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b366",
+						"extraData": "{}"
+					}
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b3667",
+						"extraData": "{}"
+					}
+				},
+				{
+					"id": -1,
+					"name": "自定义预览",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": 1037,
+					"referrerInfo": {
+						"appId": "wx66314928577b3667",
+						"extraData": "{\"admin_id\":15}"
+					}
 				}
 			]
 		}

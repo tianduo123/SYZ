@@ -58,7 +58,7 @@ Page({
   //收藏
   like() {
     wx.request({
-      url: api.like(this.data.goods_id, app.globalData.openid),
+      url: api.like(this.data.goods_id, app.globalData.openid,app.globalData.BASE_ID),
       success: (res) => {
         console.log(res)
         if (res.data.status == 1) {
@@ -136,7 +136,7 @@ Page({
     })
     //判断当前商品是否被收藏
     wx.request({
-      url: api.isLike(options.id, app.globalData.openid),
+      url: api.isLike(options.id, app.globalData.openid,app.globalData.BASE_ID),
       success: (res) => {
         console.log(res)
         if (res.data.status == 0) {

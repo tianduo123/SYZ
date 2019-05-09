@@ -23,7 +23,7 @@ Page({
   onLoad: function (options) {
     //获取我的收藏
     wx.request({
-      url: api.myLike(app.globalData.openid),
+      url: api.myLike(app.globalData.openid,app.globalData.BASE_ID),
       success:(res)=>{
         console.log(res)
         for(var i=0;i<res.data.re.length;i++){
