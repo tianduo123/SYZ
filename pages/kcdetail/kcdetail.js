@@ -30,22 +30,7 @@ Page({
     this.setData({
       isShow: true
     })
-    //----------------------------------------------------------------------------
-    //将wait里面每个人团的结束时间提取成一个数组，方便操作
-    // let endTimeList = [];
-    // console.log(this.data.groups)
-    // console.log('当前时间是', new Date().getTime())
-    // this.data.groups.forEach((item) => {
-    //   endTimeList.push(item.end_time * 1000)
-    // })
-    // //将倒计时时间存到data中
-    // this.setData({
-    //   actEndTimeList: endTimeList
-    // })
-    // console.log(this.data.actEndTimeList)
-    // //执行倒计时函数
-    // this.countDown()
-    //-----------------------------------------------------------------------------------------
+
   },
   //关闭遮罩层
   close() {
@@ -252,6 +237,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return{
+      title:'一起来拼团',
+      path:'/pages/home/home'
+    }
   }
 })

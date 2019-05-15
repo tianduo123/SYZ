@@ -34,7 +34,7 @@ Page({
     else {
       //参团/开团生成订单(需先判断是开团还是参团)
       if (this.data.type == 0) {
-        console.log('参团')
+        console.log('参团',app.globalData.userInfo)
         wx.request({
           url: api.makeGroup(),
           method: 'POST',

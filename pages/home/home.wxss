@@ -3,6 +3,15 @@ page{
   box-sizing: border-box;
   padding-bottom: 100rpx
 }
+.empty{
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: 32rpx;
+  color: #666
+}
 .getU{
   width: 100%;
   background: rgba(0,0,0,.6);

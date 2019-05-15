@@ -3,8 +3,8 @@ const api = require('./request/api.js')
 App({
   onLaunch: function (options) {
     console.log(options)
-    console.log("生元宝传过来的id是", options.referrerInfo.extraData.admin_id)
-    this.globalData.BASE_ID = options.referrerInfo.extraData.admin_id
+    // console.log("生元宝传过来的id是", options.referrerInfo.extraData.admin_id)
+    // this.globalData.BASE_ID = options.referrerInfo.extraData.admin_id
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -14,13 +14,14 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
+        console.log('login返回',res)
         wx.request({
-          url: api.getOpenid(this.globalData.appid, this.globalData.secret, res.code,this.globalData.BASE_ID),
+          url: api.getOpenid(this.globalData.appid, this.globalData.secret, res.code),
           success: (res) => {
-            console.log(res)
+            console.log('openid是-------',res)
             this.globalData.openid = res.data.openid
           }
+          
         })
       }
     })
@@ -50,5 +51,6 @@ App({
     appid: 'wx3950a029465d5070',
     secret: '2dfa279dc8380406906598be0ee6c9e7',
     openid: '',
+    BASE_ID: 15
   }
 })

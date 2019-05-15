@@ -4,12 +4,13 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
@@ -39,156 +40,10 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 3,
 			"list": [
 				{
-					"id": -1,
-					"name": "课程详情",
-					"pathName": "pages/kcdetail/kcdetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "提交订单",
-					"pathName": "pages/sub_order/sub_order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "拼团/开团详情",
-					"pathName": "pages/detail_order/detail_order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/me/me",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "订单页面",
-					"pathName": "pages/order/order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "商品列表",
-					"pathName": "pages/myGroup/myGroup",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "我的收藏",
-					"pathName": "pages/myLike/myLike",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "拼团详情",
-					"pathName": "pages/group_detail/group_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "订单确认页",
-					"pathName": "pages/confirm_order/confirm_order",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "倒计时",
-					"pathName": "pages/countdown/countdown",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "text",
-					"pathName": "pages/text/text",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "砍价",
-					"pathName": "pages/cut/cut",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "砍价商品详情",
-					"pathName": "pages/cut_detail/cut_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "自定义预览",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": 1037,
-					"referrerInfo": {
-						"appId": "wx66314928577b3667",
-						"extraData": "{}"
-					}
-				},
-				{
-					"id": -1,
-					"name": "自定义预览",
-					"pathName": "pages/home/home",
-					"query": "admin_id=15",
-					"scene": 1037,
-					"referrerInfo": {
-						"appId": "wx66314928577b3667",
-						"extraData": "{}"
-					}
-				},
-				{
-					"id": -1,
-					"name": "自定义预览",
-					"pathName": "pages/home/home",
-					"query": "admin_id=api.BASE_ID",
-					"scene": 1037,
-					"referrerInfo": {
-						"appId": "wx66314928577b3667",
-						"extraData": "{}"
-					}
-				},
-				{
-					"id": -1,
-					"name": "自定义预览",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": 1037,
-					"referrerInfo": {
-						"appId": "wx66314928577b366",
-						"extraData": "{}"
-					}
-				},
-				{
-					"id": -1,
-					"name": "自定义预览",
-					"pathName": "pages/home/home",
-					"query": "",
-					"scene": 1037,
-					"referrerInfo": {
-						"appId": "wx66314928577b3667",
-						"extraData": "{}"
-					}
-				},
-				{
-					"id": -1,
+					"id": 0,
 					"name": "自定义预览",
 					"pathName": "pages/home/home",
 					"query": "",
@@ -197,6 +52,27 @@
 						"appId": "wx66314928577b3667",
 						"extraData": "{\"admin_id\":15}"
 					}
+				},
+				{
+					"id": -1,
+					"name": "砍价成功弹窗",
+					"pathName": "pages/cut_detail/cut_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "砍价商品详情",
+					"pathName": "pages/myCutDetail/myCutDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "分享砍价商品详情",
+					"pathName": "pages/shareCutDetail/shareCutDetail",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

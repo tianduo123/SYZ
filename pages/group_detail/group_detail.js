@@ -132,11 +132,11 @@ Page({
       success:(res)=>{
         console.log(res)
         this.setData({
-          orderDetail:res.data.re
+          orderDetail:res.data.detail
         })
-        if (res.data.re.gb_status==1){
+        if (res.data.detail.gb_status==1){
           this.setData({
-            cha: res.data.re.gb_num - res.data.re.gb_num_s
+            cha: res.data.detail.gb_num - res.data.detail.gb_num_s
           })
         }
       }

@@ -12,9 +12,12 @@ Page({
   //我的砍价
   toKanjia(){
     console.log('我的砍价')
-    wx.showToast({
-      title: '此功能暂未开放！',
-      image:'../../icon/none.png',
+    // wx.showToast({
+    //   title: '此功能暂未开放',
+    //   icon:'none'
+    // })
+    wx.navigateTo({
+      url: '../myCut/myCut',
     })
   },
   //查看更多

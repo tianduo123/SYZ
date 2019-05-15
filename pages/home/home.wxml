@@ -26,7 +26,7 @@
 </view>
 
 <!-- 商品列表 -->
-<view class='goods_wrap' wx:if='{{kcList}}'>
+<view class='goods_wrap' wx:if='{{isSeleK?kcList:goodsList}}'>
   <view class='goods_item' bindtap='toDetail' wx:for='{{isSeleK?kcList:goodsList}}' wx:key data-id='{{item.id}}'>
     <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:330rpx'></image>
     <view class='name'>{{item.goods_name}}</view>
@@ -36,6 +36,7 @@
     </view>
   </view>
 </view>
-<view wx:else class='no'>
-  
+<view wx:else class='empty'>
+  <image src='../../icon/empty.svg' style='width:200rpx;height:200rpx'></image>
+  <view style='margin-top:30rpx'> {{isSeleK?"暂无拼团课程":"暂无拼团商品"}} </view>
 </view>

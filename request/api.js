@@ -3,8 +3,8 @@ const BASE_API = 'https://syb.qhkltn.com/index.php/Api'
 const BASE_IMG = 'https://syb.qhkltn.com/'
 // const BASE_ID = app.globalData.id
 //获取openid
-function getOpenid(a, b, c,id) {
-  return BASE_API + `/user/openid?appid=${a}&secret=${b}&code=${c}&admin_id=${id}`
+function getOpenid(a, b, c) {
+  return BASE_API + `/user/openid?appid=${a}&secret=${b}&code=${c}`
 }
 //课程列表
 function getKcList (a,b,id) {
@@ -87,10 +87,29 @@ function checkP(a){
 // ----------砍价相关接口-------------
 
 //砍价商品列表
-function cutList(a,id){
-  return BASE_API + `/Goods/bargain?admin_id=${id}&page=${a}`
+function cutList(a,id,b){
+  return BASE_API + `/Goods/bargain?admin_id=${id}&page=${a}&openid=${b}`
 }
-
+//砍价商品详情
+function goodsDetail(a,b,id){
+  return BASE_API + `/Goods/bargainDetail?&openid=${a}&id=${b}&admin_id=${id}`
+}
+//发起砍价
+function cut(a,b,c,d,id){
+  return BASE_API + `/Goods/kanStart?goods_id=${a}&openid=${b}&headimgurl=${c}&nickname=${d}&admin_id=${id}`
+}
+//分享页面帮人砍价
+function helpCut(a,b,c,d,e,id){
+  return BASE_API + `/Goods/helpKan?openid=${a}&goods_id=${b}&bargain_id=${c}&headimgurl=${d}&nickname=${e}&admin_id=${id}`
+}
+//砍价提交订单
+function makeCutOrder(a,b,c,d,e,f,g,id){
+  return BASE_API + `/Goods/kanOrder?openid=${a}&goods_id=${b}&ord_goods=${c}&ord_price=${d}&headimgurl=${e}&nickname=${f}&gb_id=${g}&admin_id=${id}`
+}
+//我的砍价
+function myCut(a,id){
+  return BASE_API + `/orderk/myKan?openid=${a}&admin_id=${id}`
+}
 // -----------------------
 module.exports = {
   BASE_IMG,
@@ -114,5 +133,10 @@ module.exports = {
   sendMsg3,
   getGoodsList,
   getGoodsDetail,
-  cutList
+  cutList,
+  goodsDetail,
+  cut,
+  helpCut,
+  makeCutOrder,
+  myCut
 }

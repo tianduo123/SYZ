@@ -15,7 +15,10 @@
     "pages/countdown/countdown",
     "pages/text/text",
     "pages/cut/cut",
-    "pages/cut_detail/cut_detail"
+    "pages/cut_detail/cut_detail",
+    "pages/myCut/myCut",
+    "pages/myCutDetail/myCutDetail",
+    "pages/shareCutDetail/shareCutDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
