@@ -2,9 +2,11 @@
 const api = require('./request/api.js')
 App({
   onLaunch: function (options) {
-    console.log(options)
-    // console.log("生元宝传过来的id是", options.referrerInfo.extraData.admin_id)
-    // this.globalData.BASE_ID = options.referrerInfo.extraData.admin_id
+    console.log('生员宝传过来的参数是',options)
+    console.log("生元宝传过来的id是", options.referrerInfo.extraData.admin_id)
+    this.globalData.BASE_ID = options.referrerInfo.extraData.admin_id
+   
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

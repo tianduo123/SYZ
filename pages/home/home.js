@@ -190,7 +190,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    console.log(app.globalData.BASE_ID)
+    console.log('生员宝传过来的的id是--',app.globalData.BASE_ID)
+    console.log('默认id是--15')
     wx.getStorage({
       key: 'userInfo',
       success: (res) => {
