@@ -39,7 +39,7 @@ Page({
           url: api.makeGroup(),
           method: 'POST',
           data: {
-            admin_id: 15,
+            admin_id: app.globalData.BASE_ID,
             openid: app.globalData.openid,
             headimgurl: app.globalData.userInfo.avatarUrl,
             nickname: app.globalData.userInfo.nickName,
@@ -98,7 +98,7 @@ Page({
           url: api.makeGroup(),
           method: "POST",
           data: {
-            admin_id: 15,
+            admin_id: app.globalData.BASE_ID,
             openid: app.globalData.openid,
             headimgurl: app.globalData.userInfo.avatarUrl,
             nickname: app.globalData.userInfo.nickName,

@@ -41,3 +41,15 @@ page{
   display: flex;
   align-items: center
 }
+.empty{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 32rpx
+}
+.empty>image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 80rpx auto 40rpx
+}

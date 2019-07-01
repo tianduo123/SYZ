@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -71,6 +71,13 @@
 					"id": 3,
 					"name": "分享砍价商品详情",
 					"pathName": "pages/shareCutDetail/shareCutDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的砍价",
+					"pathName": "pages/myCut/myCut",
 					"query": "",
 					"scene": null
 				}

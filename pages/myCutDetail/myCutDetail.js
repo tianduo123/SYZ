@@ -37,42 +37,39 @@
            //结束时间
            endTime: res.data.detail.dao_time
          })
-         this.data.intervalid = setInterval(() => {
-           var djs = new Date(this.data.endTime).getTime() - new Date().getTime()
-           var h = parseInt(djs / 1000 / 60 / 60 % 24)
-           var m = parseInt(djs / 1000 / 60 % 60)
-           var s = parseInt(djs / 1000 % 60)
-           console.log('倒计时时间戳', djs)
-           console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
-           this.setData({
-             h: h,
-             m: m,
-             s: s
-           })
-           if(this.data.s<0){
-             console.log('活动结束')
-             clearInterval(this.data.intervalid)
+         if(this.data.endTime){
+           this.data.intervalid = setInterval(() => {
+             var djs = new Date(this.data.endTime).getTime() - new Date().getTime()
+             var h = parseInt(djs / 1000 / 60 / 60 % 60)
+             var m = parseInt(djs / 1000 / 60 % 60)
+             var s = parseInt(djs / 1000 % 60)
+             // console.log('倒计时时间戳', djs)
+             // console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
              this.setData({
-               h:0,
-               m:0,
-               s:0,
-               isEnd:true
+               h: h,
+               m: m,
+               s: s
              })
-           }
-          //  if (this.data.s == 0 && this.data.m == 0 && this.data.h == 0) {
-          //    console.log('倒计时结束')
-          //    clearInterval(this.data.intervalid)
-          //  } else if (this.data.s < 0 || this.data.m < 0 || this.data.h < 0) {
-          //    console.log('活动结束')
-          //    clearInterval(this.data.intervalid)
-          //    this.setData({
-          //      h: 0,
-          //      m: 0,
-          //      s: 0
-          //    })
-          //  }
-
-         }, 1000)
+             if (this.data.s < 0) {
+               //  console.log('活动结束')
+               clearInterval(this.data.intervalid)
+               this.setData({
+                 h: 0,
+                 m: 0,
+                 s: 0,
+                 isEnd: true
+               })
+             }
+           }, 1000)
+         }else{
+           this.setData({
+             h: 0,
+             m: 0,
+             s: 0,
+             isEnd:true
+           })
+         }
+     
        }
      })
    },
@@ -95,16 +92,38 @@
              success: (res) => {
                console.log('立即下单返回数据', res)
                if (res.data.status == 1) {
-                 wx.showToast({
-                   title: '提交成功',
-                   success: () => {
-                     setTimeout(() => {
-                       wx.switchTab({
-                         url: '../cut/cut',
-                       })
-                     }, 1000)
+                 // 微信统一下单接口
+                 wx.request({
+                   url: api.makeOrder(res.data.data.ord_bh, app.globalData.openid, res.data.data.ord_price),
+                   success:(res)=>{
+                     console.log('微信统一下单接口返回数据',res)
+                     wx.requestPayment({
+                       timeStamp: res.data.timeStamp,
+                       nonceStr: res.data.nonceStr,
+                       package: 'prepay_id=' + res.data.prepayid,
+                       signType: 'MD5',
+                       paySign: res.data.sign,
+                       success:(res)=>{
+                         console.log(res)
+                         setTimeout(function(){
+                           wx.showToast({
+                             title: '支付成功',
+                           })
+                           wx.switchTab({
+                             url: '../cut/cut',
+                           })
+                         },1000)
+                       },
+                       fail:(res)=>{
+                         console.log(res)
+                         wx.showToast({
+                           title: '支付失败',
+                           icon:'none'
+                         })
+                       }
+                     })
                    }
-                 })
+                 }) 
                } else {
                  wx.showToast({
                    title: '发生了一个未知错误,请稍后再试',
@@ -120,7 +139,41 @@
      })
 
    },
-
+   //立即支付
+   pay(){
+     // 微信统一下单接口
+     wx.request({
+       url: api.makeOrder(this.data.orderDetail.ord_bh, app.globalData.openid, this.data.orderDetail.ord_price),
+       success: (res) => {
+         console.log('微信统一下单接口返回数据', res)
+         wx.requestPayment({
+           timeStamp: res.data.timeStamp,
+           nonceStr: res.data.nonceStr,
+           package: 'prepay_id=' + res.data.prepayid,
+           signType: 'MD5',
+           paySign: res.data.sign,
+           success: (res) => {
+             console.log(res)
+             setTimeout(function () {
+               wx.showToast({
+                 title: '支付成功',
+               })
+               wx.switchTab({
+                 url: '../cut/cut',
+               })
+             }, 1000)
+           },
+           fail: (res) => {
+             console.log(res)
+             wx.showToast({
+               title: '支付失败',
+               icon: 'none'
+             })
+           }
+         })
+       }
+     }) 
+   },
    //获取订单详情（从订单页进入）
    orderDetail() {
      wx.request({
@@ -224,7 +277,7 @@
      console.log('唯一标识bargain--', this.data.bargain_id)
      return {
        title: '快来帮我砍一刀吧,就差你啦',
-       path: `/pages/shareCutDetail/shareCutDetail?&openid=${app.globalData.openid}&admin_id=15&goods_id=${this.data.goodsId}&bargain_id=${this.data.bargain_id}&avatarurl=${this.data.avatarurl}&nickname=${this.data.nickname}`
+       path: `/pages/shareCutDetail/shareCutDetail?&openid=${app.globalData.openid}&admin_id=${app.globalData.BASE_ID}&goods_id=${this.data.goodsId}&bargain_id=${this.data.bargain_id}&avatarurl=${this.data.avatarurl}&nickname=${this.data.nickname}`
      }
    }
  })

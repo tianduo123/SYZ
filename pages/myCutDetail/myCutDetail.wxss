@@ -70,6 +70,17 @@ page{
   justify-content: space-between;
   align-items: center
 }
+.pay{
+  width: 150rpx;
+  height: 50rpx;
+  background: #CC0000;
+  color: #fff;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 28rpx;
+  justify-content: flex-end
+}
 .cutList{
   width: 95%;
   height: 500rpx;

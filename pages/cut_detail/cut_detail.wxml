@@ -12,12 +12,14 @@
         <view style='margin:0 5rpx'>:</view>
         <view class='time_wrap'>{{m}}</view>
         <view style='margin:0 5rpx'>:</view>
-        <view class='time_wrap' style='margin-right:10rpx'>{{s}}</view>后砍价过期</view>
+        <view class='time_wrap' style='margin-right:10rpx'>{{s}}</view>{{detail.huodong_status==0?"后活动开始":detail.huodong_status==1?"后砍价过期":"活动已结束"}}</view>
       <view style='font-size:32rpx;color:#FF0000'>￥{{detail.price}}</view>
     </view>
   </view>
+  <view class='{{detail.huodong_status==0?"end":isEnd&&!hasCut?"end":"cut"}}' bindtap='cut'>{{detail.huodong_status==0?"活动还没开始哦":isEnd&&!hasCut?"活动结束":isEnd&&hasCut?"砍价结束，快去下单吧":"开始砍价"}}</view>
+  <!-- <view class='end' wx:if='{{detail.huodong_status==0}}'>活动还没开始哦</view>
   <view class='end' wx:if="{{isEnd&&!hasCut}}">活动结束</view>
-  <view class='cut' bindtap='cut' wx:else>{{isEnd&&hasCut?"砍价结束，快去下单吧":"开始砍价"}}</view>
+  <view class='cut' bindtap='cut' wx:else>{{isEnd&&hasCut?"砍价结束，快去下单吧":"开始砍价"}}</view> -->
 </view>
 <view class='rule'>
   <view style='margin-left:20rpx;color:#FFFF00'>砍价规则</view>

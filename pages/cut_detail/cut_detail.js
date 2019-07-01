@@ -10,7 +10,7 @@ Page({
   data: {
     imgurl: api.BASE_IMG,
     endTime: '',//结束倒计时
-    isEnd:false//判断活动是否结束
+    isEnd:''//判断活动是否结束
   },
   //开始砍价
   cut() {
@@ -28,19 +28,8 @@ Page({
             url: `../myCutDetail/myCutDetail?source=1&isShow=true&cut_price=${res.data.data.down}&goods_id=${this.data.goodsId}&bargain_id=${res.data.data.bargain_id}`,
           })
         } else if (res.data.status == 3) {
-          wx.showModal({
-            title: '该商品您已经砍过价了哦',
-            content: '是否跳转到我的砍价',
-            success: (res) => {
-              if (res.confirm) {
-                //用户点击了确定-->跳转到我的砍价
-                wx.navigateTo({
-                  url: `../myCutDetail/myCutDetail?source=1&goods_id=${this.data.goodsId}&bargain_id=${this.data.bargain_id}`,
-                })
-              } else {
-                //用户点击了取消
-              }
-            }
+          wx.navigateTo({
+            url: `../myCutDetail/myCutDetail?source=1&goods_id=${this.data.goodsId}&bargain_id=${this.data.bargain_id}`,
           })
         } else if (res.data.status == 4 || res.data.status == 2) {
           wx.showToast({
@@ -60,6 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options)
     wx.getStorage({
       key: 'userInfo',
       success: (res) => {
@@ -96,43 +86,40 @@ Page({
           detail: res.data.detail,
           endTime:res.data.detail.dao_time
         })
-        this.data.intervalid = setInterval(() => {
-          var djs = new Date(this.data.endTime).getTime() - new Date().getTime()
-          var h = parseInt(djs / 1000 / 60 / 60 % 24)
-          var m = parseInt(djs / 1000 / 60 % 60)
-          var s = parseInt(djs / 1000 % 60)
-          // console.log('倒计时时间戳',djs)
-          // console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
-          this.setData({
-            h: h,
-            m: m,
-            s: s
-          })
-          // console.log(this.data.s)
-          if(this.data.s<0){
-            console.log('倒计时结束')
-            clearInterval(this.data.intervalid)
+        if(this.data.endTime){
+          this.data.intervalid = setInterval(() => {
+            var djs = new Date(this.data.endTime).getTime() - new Date().getTime()
+            var h = parseInt(djs / 1000 / 60 / 60 % 60)
+            var m = parseInt(djs / 1000 / 60 % 60)
+            var s = parseInt(djs / 1000 % 60)
+            // console.log('倒计时时间戳',djs,h)
+            // console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
             this.setData({
-              h:0,
-              m:0,
-              s:0,
-              isEnd:true
+              h: h,
+              m: m,
+              s: s
             })
-          }
-          // if (this.data.s ==0&&this.data.m==0&&this.data.h==0) {
-          //   console.log('倒计时结束')
-          //   clearInterval(this.data.intervalid)
-          // }
-          // else if (this.data.s < 0 || this.data.m < 0 || this.data.h < 0){
-          //   console.log('活动结束')
-          //   clearInterval(this.data.intervalid)
-          //   this.setData({
-          //     h:0,
-          //     m:0,
-          //     s:0
-          //   })
-          // }
-        }, 1000)
+            // console.log(this.data.s)
+            if (this.data.s < 0) {
+              console.log('倒计时结束')
+              clearInterval(this.data.intervalid)
+              this.setData({
+                h: 0,
+                m: 0,
+                s: 0,
+                isEnd: true
+              })
+            }
+          }, 1000)
+        }else{
+          this.setData({
+            h: 0,
+            m: 0,
+            s: 0,
+            isEnd: true
+          })
+        }
+      
         var article = JSON.parse(this.data.detail.goods_jianjie);
         WxParse.wxParse('article', 'html', article, this, 5);
       }

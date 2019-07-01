@@ -107,8 +107,8 @@ function makeCutOrder(a,b,c,d,e,f,g,id){
   return BASE_API + `/Goods/kanOrder?openid=${a}&goods_id=${b}&ord_goods=${c}&ord_price=${d}&headimgurl=${e}&nickname=${f}&gb_id=${g}&admin_id=${id}`
 }
 //我的砍价
-function myCut(a,id){
-  return BASE_API + `/orderk/myKan?openid=${a}&admin_id=${id}`
+function myCut(a,b,id){
+  return BASE_API + `/orderk/myKan?openid=${a}&type=${b}&admin_id=${id}`
 }
 // -----------------------
 module.exports = {

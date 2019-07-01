@@ -7,7 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+   isShow:true,//默认显示授权蒙层
+
+  },
+  //获取用户微信信息
+  getUserInfo(res) {
+    console.log(res)
+    if (res.detail.userInfo) {
+      app.globalData.userInfo = res.detail.userInfo
+      wx.setStorage({
+        key: 'userInfo',
+        data: res.detail.userInfo,
+      })
+      this.setData({
+        isShow: false,
+        avatarUrl: res.detail.userInfo.avatarUrl,
+        nickName: res.detail.userInfo.nickName
+      })
+    }
   },
   //我的砍价
   toKanjia(){
@@ -54,8 +71,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.userInfo)
- 
+
   },
 
   /**
@@ -73,6 +89,11 @@ Page({
       key: 'userInfo',
       success: (res) => {
         console.log(res)
+        if (res.data) {
+          this.setData({
+            isShow: false
+          })
+        }
         this.setData({
           avatarUrl: res.data.avatarUrl,
           nickName: res.data.nickName

@@ -23,7 +23,6 @@ App({
             console.log('openid是-------',res)
             this.globalData.openid = res.data.openid
           }
-          
         })
       }
     })

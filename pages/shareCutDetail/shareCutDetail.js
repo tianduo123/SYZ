@@ -30,11 +30,16 @@ Page({
         avatarurl: res.detail.userInfo.avatarUrl,
         nickname: res.detail.userInfo.nickName
       })
+      wx.setStorage({
+        key: 'userInfo',
+        data: res.detail.userInfo,
+      })
     }
   },
 
   //获取最新砍价详情
   getNewDetail() {
+    console.log('被分享人的openid是',this.data.openid1)
     wx.request({
       url: api.goodsDetail(this.data.openid1, this.data.goods_id, this.data.admin_id),
       success: (res) => {
@@ -50,8 +55,8 @@ Page({
           var h = parseInt(djs / 1000 / 60 / 60 % 24)
           var m = parseInt(djs / 1000 / 60 % 60)
           var s = parseInt(djs / 1000 % 60)
-          console.log('倒计时时间戳', djs)
-          console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
+          // console.log('倒计时时间戳', djs)
+          // console.log('倒计时', h + '小时' + m + '分钟' + s + '秒')
           this.setData({
             h: h,
             m: m,
@@ -67,18 +72,6 @@ Page({
               isEnd:true
             })
           }
-          // if (this.data.s == 0 && this.data.m == 0 && this.data.h == 0) {
-          //   console.log('倒计时结束')
-          //   clearInterval(this.data.intervalid)
-          // } else if (this.data.s < 0 || this.data.m < 0 || this.data.h < 0) {
-          //   console.log('活动结束')
-          //   clearInterval(this.data.intervalid)
-          //   this.setData({
-          //     h: 0,
-          //     m: 0,
-          //     s: 0
-          //   })
-          // }
         }, 1000)
       }
     })
@@ -92,19 +85,15 @@ Page({
   //帮他砍价
   shareCut() {
     if (!this.data.avatarurl || !this.data.nickname) {
-      wx.showToast({
-        title: '请先授权后再帮好友砍价哦',
-        icon: 'none'
-      })
+      console.log('用户还没授权')
     } else {
       wx.request({
         url: api.helpCut(this.data.openid, this.data.goods_id, this.data.bargain_id, this.data.avatarurl, this.data.nickname, this.data.admin_id),
         success: (res) => {
-          console.log('参数--', this.data.bargain_id)
-          console.log('参数--', this.data.bargain_id)
-          console.log('参数--', this.data.bargain_id)
-          console.log('参数--', this.data.bargain_id)
-
+          console.log('被分享人openid--', this.data.openid)
+          console.log('商品详情参数--', this.data.goods_id)
+          console.log('砍价id参数--', this.data.bargain_id)
+          console.log('商家adming参数--', this.data.admin_id)
           console.log('帮他砍价详情', res)
           if (res.data.status == 1) {
             //那么帮砍价成功

@@ -11,33 +11,102 @@ Page({
   },
   //去付款
 
-  pay_order() {
-    console.log('立即支付')
-    wx.request({
-      url: api.makeOrder(this.data.orderDetail.ord_bh, app.globalData.openid, this.data.detail.pin_price),
-      success: (res) => {
-        console.log(res)
-        if(res.data.status==0){
-          //拼团失败
-          wx.showModal({
-            title: '拼团失败',
-            content: res.data.msg,
-            success:(res)=>{
-              if(res.confirm){
-                setTimeout(()=>{
-                  wx.switchTab({
-                    url: '../home/home',
-                  })
-                },1000)
-              }else{
-                console.log('用户点击了取消')
+  pay_order(e) {
+    console.log('立即支付',e)
+    if(e.currentTarget.dataset.type==1){
+      //拼团去付款
+      wx.request({
+        url: api.makeOrder(this.data.orderDetail.ord_bh, app.globalData.openid, this.data.detail.pin_price),
+        success: (res) => {
+          console.log(res)
+          if (res.data.status == 0) {
+            //拼团失败
+            wx.showModal({
+              title: '拼团失败',
+              content: res.data.msg,
+              success: (res) => {
+                if (res.confirm) {
+                  setTimeout(() => {
+                    wx.switchTab({
+                      url: '../home/home',
+                    })
+                  }, 1000)
+                } else {
+                  console.log('用户点击了取消')
+                }
               }
-            }
-          })
-        }else{
-          this.setData({
-            prepayid: res.data.prepayid
-          })
+            })
+          } else {
+            this.setData({
+              prepayid: res.data.prepayid
+            })
+            wx.requestPayment({
+              timeStamp: res.data.timeStamp,
+              nonceStr: res.data.nonceStr,
+              package: 'prepay_id=' + res.data.prepayid,
+              signType: 'MD5',
+              paySign: res.data.sign,
+              success: (res) => {
+                console.log('支付成功', res)
+                //判断是否拼团成
+                wx.request({
+                  url: api.isOk(this.data.orderDetail.gb_id),
+                  success: (res) => {
+                    console.log(res)
+                    if (res.data.status == 1) {
+                      //拼团成功,发送拼团成功的模板消息
+                      wx.request({
+                        url: api.sendMsg2(this.data.orderDetail.gb_id, this.data.orderDetail.start_time),
+                        success: (res) => {
+                          console.log(res)
+                        }
+                      })
+                    }
+                  }
+                })
+                //发送支付成功模板消息
+                wx.request({
+                  url: api.sendMsg(this.data.detail.goods_name, this.data.orderDetail.ord_bh, this.data.detail.pin_price, this.data.prepayid, app.globalData.openid),
+                  success: (res) => {
+                    console.log(res)
+                  }
+                })
+                setTimeout(() => {
+                  console.log('1.5秒后跳转')
+                  wx.reLaunch({
+                    url: `../detail_order/detail_order?goods_id=${this.data.detail.id}&gb_id=${this.data.orderDetail.gb_id}`,
+                  })
+                }, 1000)
+
+              },
+              fail: (res) => {
+                console.log('支付失败', res)
+                wx.showModal({
+                  title: '取消支付',
+                  content: '是否放弃本次交易',
+                  success: (res) => {
+                    if (res.confirm) {
+                      setTimeout(() => {
+                        wx.switchTab({
+                          url: '../home/home',
+                        })
+                      }, 1000)
+                    }
+                  }
+                })
+              }
+            })
+          }
+        }
+      })
+    }else if(e.currentTarget.dataset.type==2){
+      //砍价去付款
+      console.log('砍价去付款')
+      // 微信统一下单接口
+      wx.request({
+        url: api.makeOrder(this.data.orderDetail.ord_bh, app.globalData.openid, this.data.orderDetail.ord_price),
+        success: (res) => {
+          console.log('微信统一下单接口返回数据', res)
           wx.requestPayment({
             timeStamp: res.data.timeStamp,
             nonceStr: res.data.nonceStr,
@@ -45,59 +114,28 @@ Page({
             signType: 'MD5',
             paySign: res.data.sign,
             success: (res) => {
-              console.log('支付成功', res)
-              //判断是否拼团成
-              wx.request({
-                url: api.isOk(this.data.orderDetail.gb_id),
-                success: (res) => {
-                  console.log(res)
-                  if (res.data.status == 1) {
-                    //拼团成功,发送拼团成功的模板消息
-                    wx.request({
-                      url: api.sendMsg2(this.data.orderDetail.gb_id, this.data.orderDetail.start_time),
-                      success: (res) => {
-                        console.log(res)
-                      }
-                    })
-                  }
-                }
-              })
-              //发送支付成功模板消息
-              wx.request({
-                url: api.sendMsg(this.data.detail.goods_name, this.data.orderDetail.ord_bh, this.data.detail.pin_price, this.data.prepayid, app.globalData.openid),
-                success: (res) => {
-                  console.log(res)
-                }
-              })
-              setTimeout(() => {
-                console.log('1.5秒后跳转')
-                wx.reLaunch({
-                  url: `../detail_order/detail_order?goods_id=${this.data.detail.id}&gb_id=${this.data.orderDetail.gb_id}`,
+              console.log(res)
+              setTimeout(function () {
+                wx.showToast({
+                  title: '支付成功',
+                })
+                wx.switchTab({
+                  url: '../cut/cut',
                 })
               }, 1000)
-
             },
             fail: (res) => {
-              console.log('支付失败', res)
-              wx.showModal({
-                title: '取消支付',
-                content: '是否放弃本次交易',
-                success:(res)=>{
-                  if(res.confirm){
-                    setTimeout(()=>{
-                      wx.switchTab({
-                        url: '../home/home',
-                      })
-                    },1000)
-                  }
-                }
+              console.log(res)
+              wx.showToast({
+                title: '支付失败',
+                icon: 'none'
               })
             }
           })
         }
-    
-      }
-    })
+      }) 
+    }
+ 
   },
 
 
@@ -188,7 +226,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

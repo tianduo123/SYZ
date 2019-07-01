@@ -7,18 +7,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgurl:api.BASE_IMG
+    imgurl:api.BASE_IMG,
+    select_l:true,
+    empty:false
   },
-
+  //选择
+  select(e){
+    console.log(e)
+    if(e.currentTarget.dataset.status==0){
+      console.log('选了了正在砍价')
+      this.getMyCutList(0)
+      this.setData({
+        select_l:true
+      })
+    }else{
+      console.log('选择了我的砍价')
+      this.getMyCutList(1)
+      this.setData({
+        select_l:false
+      })
+    }
+  },
   //我的砍价列表
-  getMyCutList(){
+  getMyCutList(a){
     wx.request({
-      url: api.myCut(app.globalData.openid,app.globalData.BASE_ID),
+      url: api.myCut(app.globalData.openid,a,app.globalData.BASE_ID),
       success:(res)=>{
-        console.log(res)
+        console.log('砍价列表',res)
         this.setData({
           cutList:res.data.re
         })
+        if(res.data.status==0){
+         this.setData({
+           empty: true
+         }) 
+        }else{
+          this.setData({
+            empty:false
+          })
+        }
       }
     })
   },
@@ -26,9 +53,17 @@ Page({
   //砍价商品详情
   toCutDetail(e){
     console.log(e)
-    wx.navigateTo({
-      url: `../myCutDetail/myCutDetail?source=0&bh=${e.currentTarget.dataset.bh}`,
-    })
+    if(e.currentTarget.dataset.bh){
+      wx.navigateTo({
+        url: `../myCutDetail/myCutDetail?source=0&bh=${e.currentTarget.dataset.bh}`,
+      })
+    }else if(!e.currentTarget.dataset.bh){
+      console.log('正在砍价')
+      wx.navigateTo({
+        url: `../cut_detail/cut_detail?goodsId=${e.currentTarget.dataset.id}`,
+      })
+    }
+
   },
 
 
@@ -36,7 +71,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMyCutList()
+    this.getMyCutList(0)
   },
 
   /**

@@ -143,6 +143,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log('转发传参',options)
+    if(options.admin_id){
+      app.globalData.BASE_ID = options.admin_id
+    }else{
+      console.log('转发没有传参数')
+    }
     console.log('全局数据---',app.globalData)
     // console.log('生元宝传过来的数据',options)
     //获取手机高度

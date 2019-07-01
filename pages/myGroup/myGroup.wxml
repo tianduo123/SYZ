@@ -1,4 +1,5 @@
 <!--pages/goods_list/goods_list.wxml-->
+<block wx:if='{{myList}}'>
 <view class='order-item' bindtap='toDetail' wx:for='{{myList}}' wx:key data-goodsid='{{item.goods_id}}' data-bh='{{item.ord_bh}}' data-status='{{item.status}}'>
   <view class='item_img'>
     <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:100%'></image>
@@ -21,4 +22,9 @@
       <view>{{item.start_time}}</view>
     </view>
   </view>
+</view>
+</block>
+<view class='empty'wx:else>
+  <image src='../../icon/nolike.png'></image>
+  <view>您还没有拼过团哦~</view>
 </view>

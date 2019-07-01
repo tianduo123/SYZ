@@ -14,7 +14,7 @@
       <image src='../../icon/ellipsis.png' style='width:30rpx;height:30rpx'></image>
     </view>
   </view>
-  <view class='goods_item' wx:for='{{cutList}}' wx:key data-id='{{item.id}}'>
+  <view class='goods_item' wx:for='{{cutList}}' wx:key data-id='{{item.id}}' bindtap='cutPrice'>
     <view class='item_l'>
       <image src='{{imgUrl+item.fengmian}}' style='width:100%;height:100%'></image>
     </view>
@@ -22,15 +22,20 @@
       <view class='goods_name'>{{item.goods_name}}</view>
       <view class='payInfo'>
         <view style='color:#CC0000'>已砍价{{item.success.length}}件</view>
-        <view class='kan'bindtap='cutPrice' data-goodsid='{{item.id}}' >点我砍价</view>
+        <view class='kan'>点我砍价</view>
       </view>
     </view>
   </view>
 </view>
-
-
-<!-- 功能暂未开放 -->
-<!-- <view class='empty'>
-  <image src='../../icon/empty.svg' style='width:200rpx;height:200rpx'></image>
-  <view style='margin-top:30rpx'>该功能预计5月16号开放</view>
-</view> -->
+<!-- 授权蒙层 -->
+<view class='getU' style='height:{{Height*2}}rpx' wx:if='{{isShow}}'>
+  <view class='getU_wrap'>
+    <view class='getU_t'>需要您的授权</view>
+    <view class='getU_c'>
+      <view>为了提供更好的服务</view>
+      <view>请在稍后的提示框中点击"允许"</view>
+    </view>
+    <image style='height:400rpx;width:500rpx' src='../../icon/get.png'></image>
+    <button class='getU_btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>我知道了</button>
+  </view>
+</view>

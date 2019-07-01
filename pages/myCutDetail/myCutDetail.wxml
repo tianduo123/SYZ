@@ -57,6 +57,13 @@
     <view class='item_key'>实际价格</view>
     <view class='item_value' style='color:#CC0000'>￥{{orderDetail.ord_price}}</view>
   </view>
+   <view class='order_item'>
+    <view class='item_key'>支付状态</view>
+    <view class='item_value'>{{orderDetail.is_apply_rer==0?"未支付":"已支付"}}</view>
+  </view>
+  <view style='display:flex;justify-content:flex-end' wx:if='{{orderDetail.is_apply_rer==0}}'>
+    <view class='pay' bindtap='pay'>立即支付</view>
+  </view>
 </view>
 <!-- 从详情进入 -->
 <view class='order_info2' wx:if='{{source==1}}'>

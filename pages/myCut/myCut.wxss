@@ -2,6 +2,25 @@
 page{
   background: #eeeeee
 }
+.top{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  background: #fff
+}
+.top_l{
+  border-bottom: 5rpx solid #CC0000;
+  height: 50rpx;
+  line-height: 50rpx
+}
+.top_r{
+  /* border-bottom: 5rpx solid #CC0000; */
+  height: 50rpx;
+  line-height: 50rpx
+}
 .order-item{
   width: 95%;
   height: 260rpx;
@@ -50,4 +69,17 @@ page{
   justify-content: space-between;
   font-size: 28rpx;
   color: #666666
+}
+.empty{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: 32rpx;
+}
+.empty>image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 80rpx auto 40rpx
 }

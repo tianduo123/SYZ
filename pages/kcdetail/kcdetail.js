@@ -239,7 +239,7 @@ Page({
   onShareAppMessage: function() {
     return{
       title:'一起来拼团',
-      path:'/pages/home/home'
+      path:`/pages/home/home?admin_id=${app.globalData.BASE_ID}`
     }
   }
 })

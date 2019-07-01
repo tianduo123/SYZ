@@ -1,11 +1,10 @@
-<!--pages/me/me.wxml-->
+<!-- 用户信息 -->
 <view class='userInfo'>
   <view class='avatar'>
     <image src='{{avatarUrl}}'></image>
     <view style='font-size:32rpx;color:#CC0000'>{{nickName}}</view>
   </view>
 </view>
-
 <!-- 我的订单 -->
 <view class='myOrder'>
   <view class='myOrder_title'>
@@ -35,9 +34,7 @@
     </view>
   </view>
 </view>
-
 <!-- 我的拼团、我的砍价 -->
-
 <view class='myActivity'>
   <view style='display:flex;justify-content:space-between;width:100%;border-bottom:1px solid #eeeeee;align-items:center' bindtap='toMyGroup'>
     <view class='myPin'>
@@ -64,5 +61,17 @@
     <image src='../../icon/lianxi.png' style='width:40rpx;height:40rpx;margin-right:20rpx'></image>
     <view style='font-size:32rpx'>联系商家</view>
 
+  </view>
+</view>
+<!-- 授权蒙层 -->
+<view class='getU' wx:if='{{isShow}}'>
+  <view class='getU_wrap'>
+    <view class='getU_t'>需要您的授权</view>
+    <view class='getU_c'>
+      <view>为了提供更好的服务</view>
+      <view>请在稍后的提示框中点击"允许"</view>
+    </view>
+    <image style='height:400rpx;width:500rpx' src='../../icon/get.png'></image>
+    <button class='getU_btn' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>我知道了</button>
   </view>
 </view>

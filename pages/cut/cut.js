@@ -12,6 +12,21 @@ Page({
     pageSize: 10, //每页加载的商品条数
     hasMore: true, //是否还有下一页商品（默认有）
     cutList: [], //砍价商品组数
+    isShow:true,//默认显示授权蒙层
+  },
+  //获取用户微信信息
+  getUserInfo(res) {
+    console.log(res)
+    if (res.detail.userInfo) {
+      app.globalData.userInfo = res.detail.userInfo
+      wx.setStorage({
+        key: 'userInfo',
+        data: res.detail.userInfo,
+      })
+      this.setData({
+        isShow: false
+      })
+    }
   },
   //获取砍价商品列表
   getCutList(){
@@ -27,7 +42,6 @@ Page({
           })
           // console.log('去重前的数组',this.data.cutList)
           // -----牛逼的数组去重------
-          
           var newArr = []
           for(var i=0;i<this.data.cutList.length;i++){
             var flag = true 
@@ -43,7 +57,7 @@ Page({
           this.setData({
             cutList:newArr
           })
-          // console.log('去重后的数组是',newArr)
+          console.log('去重后的数组是',newArr)
 
           //---------去重结束-----------------
           
@@ -88,7 +102,7 @@ Page({
   cutPrice(e) {
     console.log(e)
     wx.navigateTo({
-      url: `../cut_detail/cut_detail?goodsId=${e.currentTarget.dataset.goodsid}`,
+      url: `../cut_detail/cut_detail?goodsId=${e.currentTarget.dataset.id}`,
     })
   },
   /**
@@ -132,7 +146,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
- 
+    //从缓存中获取微信用户信息
+    wx.getStorage({
+      key: 'userInfo',
+      success: (res) => {
+        console.log(res)
+        if (res.data) {
+          this.setData({
+            isShow: false
+          })
+        }
+      },
+    })
   },
 
   /**
